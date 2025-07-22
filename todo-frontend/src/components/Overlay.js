@@ -3,7 +3,7 @@ import './Overlay.css';
 import io from 'socket.io-client';
 import ConflictModal from './ConflictModal';
 
-const socket = io.connect('http://localhost:3001');
+const socket = io.connect('https://todo-2-jnyc.onrender.com');
 
 const Overlay = ({ onClose, fetchTasks, setAddTaskMenu, editingTask, isEditing = false }) => {
     const handleBackgroundClick = (e) => {
@@ -89,7 +89,7 @@ const Overlay = ({ onClose, fetchTasks, setAddTaskMenu, editingTask, isEditing =
         
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3001/todo/lock-task/${editingTask._id}`, {
+            const response = await fetch(`https://todo-2-jnyc.onrender.com/todo/lock-task/${editingTask._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ const Overlay = ({ onClose, fetchTasks, setAddTaskMenu, editingTask, isEditing =
     const handleConflictResolution = async (resolution) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3001/todo/resolve-conflict/${editingTask._id}`, {
+            const response = await fetch(`https://todo-2-jnyc.onrender.com/todo/resolve-conflict/${editingTask._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ const Overlay = ({ onClose, fetchTasks, setAddTaskMenu, editingTask, isEditing =
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3001/todo/add-task', {
+            const response = await fetch('https://todo-2-jnyc.onrender.com/todo/add-task', {
               method: "POST",
               headers: { 
                 'Content-Type': 'application/json',
@@ -256,7 +256,7 @@ const Overlay = ({ onClose, fetchTasks, setAddTaskMenu, editingTask, isEditing =
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3001/todo/edit-task/${editingTask._id}`, {
+            const response = await fetch(`https://todo-2-jnyc.onrender.com/todo/edit-task/${editingTask._id}`, {
               method: "PUT",
               headers: { 
                 'Content-Type': 'application/json',
@@ -324,7 +324,7 @@ const Overlay = ({ onClose, fetchTasks, setAddTaskMenu, editingTask, isEditing =
         setSmartAssignLoading(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3001/todo/smart-assign-suggestion', {
+            const response = await fetch('https://todo-2-jnyc.onrender.com/todo/smart-assign-suggestion', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
