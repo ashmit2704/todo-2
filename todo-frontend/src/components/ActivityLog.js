@@ -7,12 +7,12 @@ const ActivityLog = ({ isOpen, onClose }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const socket = io.connect("http://localhost:3001");
+    const socket = io.connect("https://todo-2-jnyc.onrender.com");
 
     const fetchActivities = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:3001/activity-log/recent');
+            const response = await fetch('https://todo-2-jnyc.onrender.com/activity-log/recent');
             const data = await response.json();
             
             if (data.success) {
