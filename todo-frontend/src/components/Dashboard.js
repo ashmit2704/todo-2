@@ -163,7 +163,7 @@ const TaskColumn = ({ title, status, tasks, taskCount, loading, onDrop, isDragOv
 };
 
 const Dashboard = () => {
-  const socket = io.connect("http://localhost:3001");
+  const socket = io.connect("https://todo-2-jnyc.onrender.com");
   const navigate = useNavigate();
 
   const [openSide, setOpenSide] = useState(true);
@@ -193,7 +193,7 @@ const Dashboard = () => {
   const logout = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3001/auth/logout', {
+      const response = await fetch('https://todo-2-jnyc.onrender.com/auth/logout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ const Dashboard = () => {
         headers['Authorization'] = `Bearer ${token}`;
       }
       
-      const response = await fetch('http://localhost:3001/todo/get-task', {
+      const response = await fetch('https://todo-2-jnyc.onrender.com/todo/get-task', {
         headers
       });
       if (response.ok) {
@@ -265,7 +265,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem('token');
       const currentTask = Object.values(tasks).flat().find(task => task._id === taskId);
-      const response = await fetch(`http://localhost:3001/todo/update-task-status/${taskId}`, {
+      const response = await fetch(`https://todo-2-jnyc.onrender.com/todo/update-task-status/${taskId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -323,7 +323,7 @@ const Dashboard = () => {
 
   const handleStatusConflictResolution = async (resolution) => {
     try {
-      const response = await fetch(`http://localhost:3001/todo/resolve-conflict/${conflictData.taskId}`, {
+      const response = await fetch(`https://todo-2-jnyc.onrender.com/todo/resolve-conflict/${conflictData.taskId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -358,7 +358,7 @@ const Dashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3001/todo/delete-task/${taskId}`, {
+      const response = await fetch(`https://todo-2-jnyc.onrender.com/todo/delete-task/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
