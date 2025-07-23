@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [generalError, setGeneralError] = useState('');
@@ -177,7 +179,7 @@ const Login = () => {
         </form>
 
         <p className="signup-invitation">
-            Don't have an account? <a href="/register" className="signup-link">Sign up for free</a>
+            Don't have an account? <a onClick={() => navigate('/register')} className="signup-link">Sign up for free</a>
         </p>
       </div>
     </div>
